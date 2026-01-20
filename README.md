@@ -19,6 +19,7 @@ Toda la comunicación entre el frontend y el backend se realiza mediante **petic
 
 ## 📂 Estructura del Proyecto
 
+<!--
 proyecto-final/
 │
 ├── api/ # Endpoints del backend que devuelven JSON
@@ -37,8 +38,8 @@ proyecto-final/
 ├── database.sql # Script SQL para crear base de datos y tablas
 └── README.md # Documentación del proyecto
 
-yaml
-Copiar código
+
+ -->
 
 ---
 
