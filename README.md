@@ -17,29 +17,33 @@ Toda la comunicación entre el frontend y el backend se realiza mediante **petic
 
 ---
 
-## 📂 Estructura del Proyecto
-
-<!--
 proyecto-final/
 │
-├── api/ # Endpoints del backend que devuelven JSON
-│ ├── auth/ # login, register, logout
-│ └── tasks/ # CRUD de tareas
+├── api/                # Endpoints del backend que devuelven JSON
+│   ├── auth/           # login.php, register.php, logout.php
+│   └── tasks/          # create.php, list.php, update.php, delete.php
 │
-├── assets/ # Recursos estáticos
-│ ├── css/ # Estilos
-│ └── js/ # Scripts
+├── assets/             # Recursos estáticos
+│   ├── css/            # style.css
+│   └── js/             # auth.js, tasks.js
 │
-├── libs/ # Funciones y clases reutilizables
-├── Pages/ # Vistas principales
-│ └── layout/ # Header, footer, menú
-├── system/ # Configuración y conexión a la base de datos
-├── uploads/ # Archivos subidos por usuarios (si aplica)
-├── database.sql # Script SQL para crear base de datos y tablas
-└── README.md # Documentación del proyecto
+├── libs/               # Funciones y clases reutilizables
+│   └── Response.php    # Ejemplo de helper para respuestas JSON
+│
+├── Pages/              # Vistas principales del sistema
+│   ├── layout/         # header.php, footer.php
+│   ├── login.php
+│   ├── register.php
+│   └── dashboard.php
+│
+├── system/             # Configuración y conexión a la base de datos
+│   ├── config.php
+│   └── init.php
+│
+├── uploads/            # Archivos subidos por usuarios (si aplica)
+├── database.sql        # Script SQL para crear la base de datos y tablas
+└── README.md           # Documentación del proyecto
 
-
- -->
 
 ---
 
