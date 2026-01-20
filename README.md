@@ -15,37 +15,6 @@ Toda la comunicación entre el frontend y el backend se realiza mediante **petic
 - **Servidor local:** XAMPP (Apache + MySQL)  
 - **Control de versiones:** GitHub  
 
----
-
-proyecto-final/
-│
-├── api/                # Endpoints del backend que devuelven JSON
-│   ├── auth/           # login.php, register.php, logout.php
-│   └── tasks/          # create.php, list.php, update.php, delete.php
-│
-├── assets/             # Recursos estáticos
-│   ├── css/            # style.css
-│   └── js/             # auth.js, tasks.js
-│
-├── libs/               # Funciones y clases reutilizables
-│   └── Response.php    # Ejemplo de helper para respuestas JSON
-│
-├── Pages/              # Vistas principales del sistema
-│   ├── layout/         # header.php, footer.php
-│   ├── login.php
-│   ├── register.php
-│   └── dashboard.php
-│
-├── system/             # Configuración y conexión a la base de datos
-│   ├── config.php
-│   └── init.php
-│
-├── uploads/            # Archivos subidos por usuarios (si aplica)
-├── database.sql        # Script SQL para crear la base de datos y tablas
-└── README.md           # Documentación del proyecto
-
-
----
 
 ## ⚙️ Requisitos del Sistema
 
