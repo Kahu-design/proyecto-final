@@ -1,3 +1,9 @@
+function showMessage(text, type = 'error') {
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = text;
+    messageDiv.className = 'message ' + type;
+}
+
 function register() {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -18,14 +24,16 @@ function register() {
     .then(res => res.json())
     .then(data => {
         if (data.status === 'success') {
-            alert('Registro exitoso');
-            window.location = 'login.php';
+            showMessage('Registro exitoso. Redirigiendo...', 'success');
+            setTimeout(() => {
+                window.location = 'login.php';
+            }, 1500);
         } else {
-            alert(data.message);
+            showMessage(data.message);
         }
     })
     .catch(() => {
-        alert('Error de conexión');
+        showMessage('Error de conexión');
     });
 }
 
@@ -47,10 +55,16 @@ function login() {
     .then(res => res.json())
     .then(data => {
         if (data.status === 'success') {
-            window.location = 'dashboard.php';
+            showMessage('Login correcto. Redirigiendo...', 'success');
+            setTimeout(() => {
+                window.location = 'dashboard.php';
+            }, 1000);
         } else {
-            alert(data.message);
+            showMessage(data.message);
         }
+    })
+    .catch(() => {
+        showMessage('Error de conexión');
     });
 }
 
@@ -63,4 +77,3 @@ function logout() {
         window.location.href = 'login.php';
     });
 }
-

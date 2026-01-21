@@ -13,15 +13,17 @@ require_once 'layout/header.php';
     <div class="card">
         <h2>Mis Tareas</h2>
 
+        <div id="message" class="message"></div>
+
         <input type="text" id="title" placeholder="Título de la tarea">
         <textarea id="description" placeholder="Descripción"></textarea>
         <button onclick="createTask()">Agregar Tarea</button>
         <button onclick="updateTask()">Actualizar Tarea</button>    
 
-
         <div id="taskList"></div>
     </div>
 </div>
+
 
 <script src="../assets/js/tasks.js"></script>
 <?php require_once 'layout/footer.php'; ?>

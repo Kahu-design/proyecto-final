@@ -103,3 +103,21 @@ button:hover {
     color: #777;
     margin-top: 40px;
 }
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+

@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', loadTasks);
 
 let editingTaskId = null;
 
+function showMessage(text, type = 'error') {
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = text;
+    messageDiv.className = 'message ' + type;
+}
+
 function loadTasks() {
     fetch('../api/tasks/list.php', {
         credentials: 'same-origin'
@@ -30,6 +36,9 @@ function loadTasks() {
                 </div>
             `;
         });
+    })
+    .catch(() => {
+        showMessage('Error al cargar las tareas');
     });
 }
 
@@ -38,7 +47,7 @@ function createTask() {
     const descriptionValue = description.value.trim();
 
     if (!titleValue) {
-        alert('El título es obligatorio');
+        showMessage('El título es obligatorio');
         return;
     }
 
@@ -51,10 +60,19 @@ function createTask() {
             description: descriptionValue
         })
     })
-    .then(() => {
-        title.value = '';
-        description.value = '';
-        loadTasks();
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showMessage('Tarea creada correctamente', 'success');
+            title.value = '';
+            description.value = '';
+            loadTasks();
+        } else {
+            showMessage(data.message);
+        }
+    })
+    .catch(() => {
+        showMessage('Error al crear la tarea');
     });
 }
 
@@ -65,7 +83,10 @@ function editTask(id, taskTitle, taskDescription) {
 }
 
 function updateTask() {
-    if (!editingTaskId) return;
+    if (!editingTaskId) {
+        showMessage('No hay ninguna tarea seleccionada');
+        return;
+    }
 
     fetch('../api/tasks/update.php', {
         method: 'PUT',
@@ -77,11 +98,20 @@ function updateTask() {
             description: description.value.trim()
         })
     })
-    .then(() => {
-        editingTaskId = null;
-        title.value = '';
-        description.value = '';
-        loadTasks();
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showMessage('Tarea actualizada correctamente', 'success');
+            editingTaskId = null;
+            title.value = '';
+            description.value = '';
+            loadTasks();
+        } else {
+            showMessage(data.message);
+        }
+    })
+    .catch(() => {
+        showMessage('Error al actualizar la tarea');
     });
 }
 
@@ -92,7 +122,18 @@ function deleteTask(id) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ id })
     })
-    .then(() => loadTasks());
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showMessage('Tarea eliminada', 'success');
+            loadTasks();
+        } else {
+            showMessage(data.message);
+        }
+    })
+    .catch(() => {
+        showMessage('Error al eliminar la tarea');
+    });
 }
 
 /* Seguridad básica contra comillas */
